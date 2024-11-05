@@ -316,3 +316,6 @@ export const generateFinancialLedgerDataList = (count: number) => {
   }
   financialLedgerDataRef.value = data;
 };
+
+generateFinancialLedgerDataList(50);
+store.updateProjectItems(financialLedgerDataRef.value);
