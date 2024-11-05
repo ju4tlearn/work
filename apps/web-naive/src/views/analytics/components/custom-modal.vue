@@ -16,25 +16,37 @@ import {
   NTabs,
 } from 'naive-ui';
 
-defineProps<{
+import { useAnalyticsStore } from '../client';
+
+const props = defineProps<{
   chartComponent?: Component;
   dataComponent?: Component;
-  projects: SelectMixedOption[];
+  projectItems?: SelectMixedOption[];
   title: string;
 }>();
 
 const emit = defineEmits<{
   downloadData: [value: string];
-  project: [value: string];
   statCycle: [value: string];
   viewYearCycle: [value: string];
 }>();
 
+const store = useAnalyticsStore();
+
 const showModal = ref<boolean>(false);
 const isViewData = ref<boolean>(false);
-const selectedProject = ref<string>();
-const selectedCycle = ref();
-const viewYearCycle = ref();
+
+const projectSelectOptions = ref<SelectMixedOption[]>([]);
+
+watch(
+  () => props.projectItems,
+  (value) => {
+    projectSelectOptions.value = [
+      { label: '全部', value: undefined },
+      ...(value ?? []),
+    ];
+  },
+);
 
 defineExpose({
   openModal: () => {
@@ -45,30 +57,13 @@ defineExpose({
   },
 });
 
-watch(
-  () => selectedProject.value,
-  (value) => {
-    if (value) emit('project', value);
-  },
-);
-
-watch(
-  () => selectedCycle.value,
-  (value) => {
-    if (value) emit('statCycle', value);
-  },
-);
-
-watch(
-  () => viewYearCycle.value,
-  (value) => {
-    if (value) emit('viewYearCycle', value);
-  },
-);
-
-const handleBeforeLeave = (tab: string) => {
+const tabHandleBeforeLeave = (tab: string) => {
   isViewData.value = tab === 'data';
   return true;
+};
+
+const modalHandleAfterLeave = () => {
+  projectSelectOptions.value = [{ label: '全部', value: undefined }];
 };
 </script>
 
@@ -79,8 +74,9 @@ const handleBeforeLeave = (tab: string) => {
     preset="card"
     size="medium"
     style="width: 90%"
+    @after-leave="modalHandleAfterLeave()"
   >
-    <NTabs animated type="line" @before-leave="handleBeforeLeave">
+    <NTabs animated type="line" @before-leave="tabHandleBeforeLeave">
       <NTabPane name="chart" tab="图表">
         <component :is="chartComponent" v-if="chartComponent" />
         <div v-else class="p-16">暂无数据</div>
@@ -96,7 +92,7 @@ const handleBeforeLeave = (tab: string) => {
             <div class="flex items-center gap-2">
               <span>指定统计周期:</span>
               <NRadioGroup
-                v-model:value="selectedCycle"
+                v-model:value="store.checkRange"
                 class="border-none"
                 name="cycleSelect1"
                 size="small"
@@ -108,8 +104,8 @@ const handleBeforeLeave = (tab: string) => {
             </div>
 
             <NDatePicker
-              v-if="selectedCycle === 'year'"
-              v-model:value="viewYearCycle"
+              v-if="store.checkRange === 'year'"
+              v-model:value="store.checkDateRange"
               class="w-64"
               clearable
               size="small"
@@ -120,8 +116,8 @@ const handleBeforeLeave = (tab: string) => {
           <div class="flex w-48 items-center gap-2">
             <div class="shrink-0">项目:</div>
             <NSelect
-              v-model:value="selectedProject"
-              :options="projects"
+              v-model:value="store.selectedProject"
+              :options="projectSelectOptions"
               class="w-full max-w-lg"
               placeholder="请选择"
               size="small"
