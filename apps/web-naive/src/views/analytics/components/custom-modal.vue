@@ -64,6 +64,9 @@ const tabHandleBeforeLeave = (tab: string) => {
 
 const modalHandleAfterLeave = () => {
   projectSelectOptions.value = [{ label: '全部', value: undefined }];
+  store.selectedProject = '';
+  store.checkRange = '';
+  store.checkDateRange = [0, 0];
 };
 </script>
 
