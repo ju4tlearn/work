@@ -14,5 +14,8 @@
   "manage": {
     "title": "管理",
     "merchant": "商户管理"
+  },
+  "analytics": {
+    "title": "数据分析"
   }
 }
