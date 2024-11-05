@@ -2,6 +2,7 @@
 import { type Component, ref } from 'vue';
 import { defineAsyncComponent } from 'vue';
 
+import { useAnalyticsStore } from './client';
 import CustomModal from './components/custom-modal.vue';
 import BarChart from './index-charts/bar-chart.vue';
 import DoughnutChart from './index-charts/doughnut-chart.vue';
@@ -85,21 +86,19 @@ const analyticsItems: analyticsItem[] = [
 
 const modalRef = ref<InstanceType<typeof CustomModal> | null>();
 const viewItem = ref<analyticsItem>();
+
+const store = useAnalyticsStore();
 </script>
 
 <template>
-  <CustomModal
-    ref="modalRef"
-    :chart-component="viewItem?.chartComponent"
-    :data-component="viewItem?.dataComponent"
-    :projects="[
-      { label: 'Item1', value: '1' },
-      { label: 'Item2', value: '2' },
-    ]"
-    :title="viewItem?.title!"
-  />
-
   <div class="p-4">
+    <CustomModal
+      ref="modalRef"
+      :chart-component="viewItem?.chartComponent"
+      :data-component="viewItem?.dataComponent"
+      :project-items="store.projectItems"
+      :title="viewItem?.title!"
+    />
     <div
       class="grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
     >
