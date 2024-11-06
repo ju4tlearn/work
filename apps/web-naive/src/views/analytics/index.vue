@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { type Component, ref } from 'vue';
+import { type Component, ref, watch } from 'vue';
 import { defineAsyncComponent } from 'vue';
 
-import { useAnalyticsStore } from './client';
+import {
+  contractStartDateColumn,
+  projectColumn,
+  useAnalyticsStore,
+} from './client';
 import CustomModal from './components/custom-modal.vue';
 import BarChart from './index-charts/bar-chart.vue';
 import DoughnutChart from './index-charts/doughnut-chart.vue';
@@ -88,6 +92,20 @@ const modalRef = ref<InstanceType<typeof CustomModal> | null>();
 const viewItem = ref<analyticsItem>();
 
 const store = useAnalyticsStore();
+
+watch(
+  () => store.selectedProject,
+  (value) => {
+    projectColumn.filterOptionValue = value;
+  },
+);
+
+watch(
+  () => store.checkRange,
+  (value) => {
+    contractStartDateColumn.filterOptionValue = value;
+  },
+);
 </script>
 
 <template>
