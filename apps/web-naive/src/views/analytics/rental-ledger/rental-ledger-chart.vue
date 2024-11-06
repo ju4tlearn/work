@@ -16,11 +16,16 @@ const lineEcharts = useEcharts(lineChartContainer);
 
 const pieSerieData = computed(() => {
   const data = rentalLedgerByProjectDataRef.value;
-  const result = data.map((item) => ({
-    value: Number.parseFloat(item.occupancyRate.replace('%', '')) / 100,
-    name: item.projectName,
-  }));
-  return result;
+
+  const sortedData = data
+    .map((item) => ({
+      value: Number.parseFloat(item.occupancyRate.replace('%', '')) / 100,
+      name: item.projectName,
+    }))
+    .sort((a, b) => b.value - a.value) // 按值降序排序
+    .slice(0, 6); // 取前6个占比大的项目
+
+  return sortedData;
 });
 
 // 续签判断模糊，暂时不做
@@ -32,6 +37,7 @@ onMounted(() => {
   pieEcharts.renderEcharts({
     title: {
       text: '项目各自出租率对比',
+      subtext: '取前6个占比大的项目',
     },
     tooltip: {
       trigger: 'item',

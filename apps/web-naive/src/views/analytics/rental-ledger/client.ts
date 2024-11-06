@@ -259,5 +259,5 @@ const fetchData = (count: number) => {
   rentalLedgerByRoomDataRef.value = roomData;
 };
 
-fetchData(10);
+fetchData(50);
 store.updateProjectItems(rentalLedgerByProjectDataRef.value);
