@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { watch } from 'vue';
 
-import { projectColumn, useAnalyticsStore } from '../client';
-import CustomTable from '../components/custom-table.vue';
 import {
   contractStartDateColumn,
-  financialLedgerDataRef,
-  initColumns,
-} from './client';
+  projectColumn,
+  useAnalyticsStore,
+} from '../client';
+import CustomTable from '../components/custom-table.vue';
+import { financialLedgerDataRef, initColumns } from './client';
 
 const store = useAnalyticsStore();
 

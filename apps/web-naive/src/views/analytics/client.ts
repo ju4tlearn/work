@@ -84,3 +84,66 @@ export const projectColumn = reactive<
     return row.projectName === value;
   },
 });
+
+const store = useAnalyticsStore();
+
+export const contractStartDateColumn = reactive<
+  DataTableBaseColumn<{
+    contractStartDate: string;
+  }>
+>({
+  title: '合同起始日',
+  key: 'contractStartDate',
+  width: 150,
+  fixed: 'left',
+  filter(value, row) {
+    switch (value) {
+      case 'month': {
+        const currentDate = new Date();
+        const firstDay = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          1,
+        );
+        const lastDay = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth() + 1,
+          0,
+        );
+        return (
+          new Date(row.contractStartDate) >= firstDay &&
+          new Date(row.contractStartDate) <= lastDay
+        );
+      }
+
+      case 'week': {
+        const currentDate = new Date();
+        const currentDay = currentDate.getDay();
+        const first =
+          currentDate.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
+        const last = first + 6;
+        const firstDay = new Date(currentDate.setDate(first));
+        const lastDay = new Date(currentDate.setDate(last));
+        return (
+          new Date(row.contractStartDate) >= firstDay &&
+          new Date(row.contractStartDate) <= lastDay
+        );
+      }
+
+      case 'year': {
+        if (store.checkDateRange) {
+          const [start, end] = store.checkDateRange;
+          return (
+            new Date(row.contractStartDate) >= new Date(start) &&
+            new Date(row.contractStartDate) <= new Date(end)
+          );
+        }
+        return true;
+      }
+
+      default: {
+        return true;
+      }
+    }
+  },
+});
