@@ -40,6 +40,14 @@ export const getRandomString = (prefix: string, length: number): string => {
   return result;
 };
 
+export const getRandomAddress = () => {
+  const streets = ['东街', '西街', '南路', '北路', '环城路', '科技大道'];
+  const buildingNumbers = ['1号', '2号', '3号', '4号', '5号'];
+  const cities = ['北京', '上海', '广州', '深圳', '杭州', '武汉'];
+
+  return `${cities[Math.floor(Math.random() * cities.length)]} ${streets[Math.floor(Math.random() * streets.length)]} ${buildingNumbers[Math.floor(Math.random() * buildingNumbers.length)]}`;
+};
+
 export const useAnalyticsStore = defineStore('analyticsStore', () => {
   const projectItems = ref<
     {
