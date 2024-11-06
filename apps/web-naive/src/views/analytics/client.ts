@@ -46,7 +46,7 @@ export const useAnalyticsStore = defineStore('analyticsStore', () => {
     }[]
   >([]);
   const selectedProject = ref<string>();
-  const checkRange = ref<string>();
+  const checkRange = ref<string>('all');
   const checkDateRange = ref<[number, number]>();
 
   const updateProjectItems = (data: any) => {

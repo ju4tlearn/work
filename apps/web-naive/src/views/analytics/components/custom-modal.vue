@@ -64,9 +64,9 @@ const tabHandleBeforeLeave = (tab: string) => {
 
 const modalHandleAfterLeave = () => {
   projectSelectOptions.value = [{ label: '全部', value: undefined }];
-  store.selectedProject = '';
-  store.checkRange = '';
-  store.checkDateRange = [0, 0];
+  store.selectedProject = undefined;
+  store.checkRange = 'all';
+  store.checkDateRange = undefined;
 };
 </script>
 
@@ -100,6 +100,7 @@ const modalHandleAfterLeave = () => {
                 name="cycleSelect1"
                 size="small"
               >
+                <NRadioButton value="all"> 所有 </NRadioButton>
                 <NRadioButton value="week"> 本周 </NRadioButton>
                 <NRadioButton value="month"> 本月 </NRadioButton>
                 <NRadioButton value="year"> 本年 </NRadioButton>
