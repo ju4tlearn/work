@@ -90,9 +90,9 @@ export interface RentalLedgerByProjectData {
   // 项目地址
   projectAddress: string;
   // 出租率（截止时间项目整体出租率）
-  OccupancyRate: string;
+  occupancyRate: string;
   // 退租率
-  LeaseCancellationRate: string;
+  leaseCancellationRate: string;
   // 新增签约面积
   addContractArea: string;
   // 新增续租面积

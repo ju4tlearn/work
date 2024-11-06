@@ -305,7 +305,7 @@ export const generateFinancialLedgerData = (): FinanceLedgerData => {
 };
 
 // 模拟请求数据
-export const generateFinancialLedgerDataList = (count: number) => {
+const fetchData = (count: number) => {
   const data: FinanceLedgerData[] = [];
   for (let i = 0; i < count; i++) {
     data.push(generateFinancialLedgerData());
@@ -313,5 +313,5 @@ export const generateFinancialLedgerDataList = (count: number) => {
   financialLedgerDataRef.value = data;
 };
 
-generateFinancialLedgerDataList(50);
+fetchData(50);
 store.updateProjectItems(financialLedgerDataRef.value);
