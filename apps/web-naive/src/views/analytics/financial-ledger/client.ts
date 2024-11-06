@@ -8,22 +8,13 @@ import {
   getRandomAmount,
   getRandomDate,
   getRandomString,
+  projectColumn,
   useAnalyticsStore,
 } from '../client';
 
 const store = useAnalyticsStore();
 
 export const financialLedgerDataRef = ref<FinanceLedgerData[]>([]);
-
-export const projectColumn = reactive<DataTableBaseColumn<FinanceLedgerData>>({
-  title: '项目名称',
-  key: 'projectName',
-  width: 120,
-  fixed: 'left',
-  filter(value, row) {
-    return row.projectName === value;
-  },
-});
 
 export const contractStartDateColumn = reactive<
   DataTableBaseColumn<FinanceLedgerData>

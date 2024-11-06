@@ -1,4 +1,6 @@
-import { ref } from 'vue';
+import type { DataTableBaseColumn } from 'naive-ui';
+
+import { reactive, ref } from 'vue';
 
 import { defineStore } from 'pinia';
 
@@ -69,4 +71,16 @@ export const useAnalyticsStore = defineStore('analyticsStore', () => {
     checkRange,
     checkDateRange,
   };
+});
+
+export const projectColumn = reactive<
+  DataTableBaseColumn<{ projectName: string }>
+>({
+  title: '项目名称',
+  key: 'projectName',
+  width: 120,
+  fixed: 'left',
+  filter(value, row) {
+    return row.projectName === value;
+  },
 });
