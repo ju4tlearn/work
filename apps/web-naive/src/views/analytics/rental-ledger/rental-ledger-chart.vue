@@ -7,7 +7,10 @@ import {
   useEcharts,
 } from '@vben/plugins/echarts';
 
+import { useAnalyticsStore } from '../client';
 import { rentalLedgerByProjectDataRef } from './client';
+
+const store = useAnalyticsStore();
 
 const pieChartContainer = ref<EchartsUIType>();
 const lineChartContainer = ref<EchartsUIType>();
@@ -34,6 +37,8 @@ const pieSerieData = computed(() => {
 // const lineSerieDataOfRenew = computed(() => {});
 
 onMounted(() => {
+  store.updateProjectItems(rentalLedgerByProjectDataRef.value);
+
   pieEcharts.renderEcharts({
     title: {
       text: '项目各自出租率对比',

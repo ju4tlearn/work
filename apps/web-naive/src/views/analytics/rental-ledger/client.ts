@@ -13,10 +13,7 @@ import {
   getRandomDate,
   getRandomString,
   projectColumn,
-  useAnalyticsStore,
 } from '../client';
-
-const store = useAnalyticsStore();
 
 export const rentalLedgerByProjectDataRef = ref<RentalLedgerByProjectData[]>(
   [],
@@ -260,4 +257,3 @@ const fetchData = (count: number) => {
 };
 
 fetchData(50);
-store.updateProjectItems(rentalLedgerByProjectDataRef.value);
