@@ -1,3 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import CustomTable from '../components/custom-table.vue';
+import { columns, rentArrearsDataRef } from './client';
+</script>
 
-<template>欠租欠款数据</template>
+<template>
+  <CustomTable :columns="columns()" :data="rentArrearsDataRef" />
+</template>
