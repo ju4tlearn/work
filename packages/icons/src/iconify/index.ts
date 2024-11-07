@@ -25,3 +25,11 @@ export const IcOutlineAdd = createIconifyIcon('ic:outline-add');
 export const MaterialSymbolsInfoOutline = createIconifyIcon(
   'material-symbols:info-outline',
 );
+
+export const Iconadd = createIconifyIcon('material-symbols:add');
+export const Iconsearch = createIconifyIcon('material-symbols:search');
+export const Iconwallet = createIconifyIcon('lucide:wallet');
+export const Iconbell = createIconifyIcon('smi:bell');
+export const Icondownload = createIconifyIcon('material-symbols:download');
+export const Iconremove = createIconifyIcon('line-md:remove');
+export const Iconupload = createIconifyIcon('prime:upload');

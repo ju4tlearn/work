@@ -64,7 +64,7 @@ const routes: RouteRecordRaw[] = [
       {
         name: 'VbenAbout',
         path: '/vben-admin/about',
-        component: () => import('#/views/_core/about/index.vue'),
+        component: () => import('#/views/_core/about/management.vue'),
         meta: {
           badgeType: 'dot',
           badgeVariants: 'destructive',
@@ -85,7 +85,7 @@ export default routes;
 
 ::: tip
 
-- The parent route of multi-level routing does not need to set the 'component' attribute, only the 'children' attribute needs to be set. Unless you really need to display content under nested parent routing.
+- The parent route of multi-level routing does not need to set the 'component' attribute, only the ' children' attribute needs to be set. Unless you really need to display content under nested parent routing.
 
 - If there are no special circumstances, the 'redirect' attribute of the parent route does not need to be specified and will default to the first child route.
 
@@ -238,7 +238,7 @@ const routes: RouteRecordRaw[] = [
       {
         name: 'HomeIndex',
         path: '/home/index',
-        component: () => import('#/views/home/index.vue'),
+        component: () => import('#/views/home/management.vue'),
         meta: {
           icon: 'mdi:home',
           title: $t('page.home.index'),

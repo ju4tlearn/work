@@ -14,5 +14,12 @@
   "manage": {
     "title": "管理",
     "merchant": "商户管理"
+  },
+  "performance": {
+    "title": "业绩管理",
+    "management": "业绩台账",
+    "record": "分佣配置",
+    "approval": "业绩审批",
+    "permission": "权限配置"
   }
 }

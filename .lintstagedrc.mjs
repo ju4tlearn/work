@@ -8,11 +8,7 @@ export default {
     'stylelint --fix --allow-empty-input',
   ],
   '*.md': ['prettier --cache --ignore-unknown --write'],
-  '*.vue': [
-    'prettier --write',
-    'eslint --cache --fix',
-    'stylelint --fix --allow-empty-input',
-  ],
+  '*.vue': ['prettier --write', 'eslint --cache --fix'],
   '{!(package)*.json,*.code-snippets,.!(browserslist)*rc}': [
     'prettier --cache --write--parser json',
   ],
