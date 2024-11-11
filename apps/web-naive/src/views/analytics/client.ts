@@ -1,4 +1,4 @@
-import type { DataTableBaseColumn } from 'naive-ui';
+import type { DataTableColumn } from 'naive-ui';
 
 import { reactive, ref } from 'vue';
 
@@ -85,22 +85,22 @@ export const useAnalyticsStore = defineStore('analyticsStore', () => {
   };
 });
 
-export const projectColumn = reactive<
-  DataTableBaseColumn<{ projectName: string }>
->({
-  title: '项目名称',
-  key: 'projectName',
-  width: 120,
-  fixed: 'left',
-  filter(value, row) {
-    return row.projectName === value;
+export const projectColumn = reactive<DataTableColumn<{ projectName: string }>>(
+  {
+    title: '项目名称',
+    key: 'projectName',
+    width: 120,
+    fixed: 'left',
+    filter(value, row) {
+      return row.projectName === value;
+    },
   },
-});
+);
 
 const store = useAnalyticsStore();
 
 export const contractStartDateColumn = reactive<
-  DataTableBaseColumn<{
+  DataTableColumn<{
     contractStartDate: string;
   }>
 >({

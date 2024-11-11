@@ -1,4 +1,4 @@
-import type { DataTableBaseColumn } from 'naive-ui';
+import type { DataTableColumn } from 'naive-ui';
 
 import type {
   RentalLedgerByProjectData,
@@ -22,7 +22,7 @@ export const rentalLedgerByProjectDataRef = ref<RentalLedgerByProjectData[]>(
 export const rentalLedgerByRoomDataRef = ref<RentalLedgerByRoomData[]>([]);
 
 export const byProjectColumns =
-  (): DataTableBaseColumn<RentalLedgerByProjectData>[] => [
+  (): DataTableColumn<RentalLedgerByProjectData>[] => [
     {
       title: '序号',
       key: 'id',
@@ -65,130 +65,129 @@ export const byProjectColumns =
     },
   ];
 
-export const byRoomColumns =
-  (): DataTableBaseColumn<RentalLedgerByRoomData>[] => [
-    {
-      title: '序号',
-      key: 'id',
-      width: 80,
-      fixed: 'left',
-      render(_, index) {
-        return index + 1;
-      },
+export const byRoomColumns = (): DataTableColumn<RentalLedgerByRoomData>[] => [
+  {
+    title: '序号',
+    key: 'id',
+    width: 80,
+    fixed: 'left',
+    render(_, index) {
+      return index + 1;
     },
-    projectColumn,
-    contractStartDateColumn,
-    {
-      title: '分期',
-      key: 'installment',
-      width: 100,
-    },
-    {
-      title: '楼栋',
-      key: 'buildingNo',
-      width: 100,
-    },
-    {
-      title: '层号',
-      key: 'floorNo',
-      width: 100,
-    },
-    {
-      title: '房号',
-      key: 'roomNo',
-      width: 100,
-    },
-    {
-      title: '实测面积',
-      key: 'actualArea',
-      width: 100,
-    },
-    {
-      title: '可租面积',
-      key: 'activeArea',
-      width: 100,
-    },
-    {
-      title: '已租面积',
-      key: 'activatedArea',
-      width: 100,
-    },
-    {
-      title: '房源情况',
-      key: 'availability',
-      width: 100,
-    },
-    {
-      title: '客户名称',
-      key: 'customerName',
-      width: 100,
-    },
-    {
-      title: '品牌',
-      key: 'brand',
-      width: 100,
-    },
-    {
-      title: '合同面积',
-      key: 'contractArea',
-      width: 100,
-    },
-    {
-      title: '签约日期',
-      key: 'signingDate',
-      width: 150,
-    },
-    {
-      title: '合同到期日',
-      key: 'contractEndDate',
-      width: 150,
-    },
-    {
-      title: '租期（年）',
-      key: 'leasePeriod',
-      width: 100,
-    },
-    {
-      title: '免租期',
-      key: 'rentFreePeriod',
-      width: 100,
-    },
-    {
-      title: '押付方式',
-      key: 'paymentMethod',
-      width: 100,
-    },
-    {
-      title: '履约保证金',
-      key: 'performanceBond',
-      width: 100,
-    },
-    {
-      title: '签约单价',
-      key: 'signingPrice',
-      width: 100,
-    },
-    {
-      title: '招商人员',
-      key: 'businessPersonnel',
-      width: 100,
-    },
-    {
-      title: '客户渠道',
-      key: 'customerChannel',
-      width: 100,
-    },
-    {
-      title: '所属行业',
-      key: 'industry',
-      width: 100,
-    },
-    {
-      title: '备注',
-      key: 'remarks',
-      width: 100,
-    },
-  ];
+  },
+  projectColumn,
+  contractStartDateColumn,
+  {
+    title: '分期',
+    key: 'installment',
+    width: 100,
+  },
+  {
+    title: '楼栋',
+    key: 'buildingNo',
+    width: 100,
+  },
+  {
+    title: '层号',
+    key: 'floorNo',
+    width: 100,
+  },
+  {
+    title: '房号',
+    key: 'roomNo',
+    width: 100,
+  },
+  {
+    title: '实测面积',
+    key: 'actualArea',
+    width: 100,
+  },
+  {
+    title: '可租面积',
+    key: 'activeArea',
+    width: 100,
+  },
+  {
+    title: '已租面积',
+    key: 'activatedArea',
+    width: 100,
+  },
+  {
+    title: '房源情况',
+    key: 'availability',
+    width: 100,
+  },
+  {
+    title: '客户名称',
+    key: 'customerName',
+    width: 100,
+  },
+  {
+    title: '品牌',
+    key: 'brand',
+    width: 100,
+  },
+  {
+    title: '合同面积',
+    key: 'contractArea',
+    width: 100,
+  },
+  {
+    title: '签约日期',
+    key: 'signingDate',
+    width: 150,
+  },
+  {
+    title: '合同到期日',
+    key: 'contractEndDate',
+    width: 150,
+  },
+  {
+    title: '租期（年）',
+    key: 'leasePeriod',
+    width: 100,
+  },
+  {
+    title: '免租期',
+    key: 'rentFreePeriod',
+    width: 100,
+  },
+  {
+    title: '押付方式',
+    key: 'paymentMethod',
+    width: 100,
+  },
+  {
+    title: '履约保证金',
+    key: 'performanceBond',
+    width: 100,
+  },
+  {
+    title: '签约单价',
+    key: 'signingPrice',
+    width: 100,
+  },
+  {
+    title: '招商人员',
+    key: 'businessPersonnel',
+    width: 100,
+  },
+  {
+    title: '客户渠道',
+    key: 'customerChannel',
+    width: 100,
+  },
+  {
+    title: '所属行业',
+    key: 'industry',
+    width: 100,
+  },
+  {
+    title: '备注',
+    key: 'remarks',
+    width: 100,
+  },
+];
 
 const generateRentalLedgerByProjectData = (
   projectName: string,

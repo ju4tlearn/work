@@ -1,4 +1,4 @@
-import type { DataTableBaseColumn } from 'naive-ui';
+import type { DataTableColumn } from 'naive-ui';
 
 import type { RentArrearsData } from '../models';
 
@@ -14,7 +14,7 @@ import {
 
 export const rentArrearsDataRef = ref<RentArrearsData[]>([]);
 
-export const columns = (): DataTableBaseColumn<RentArrearsData>[] => [
+export const columns = (): DataTableColumn<RentArrearsData>[] => [
   {
     title: '序号',
     key: 'id',

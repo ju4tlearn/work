@@ -1,4 +1,4 @@
-import type { DataTableBaseColumn } from 'naive-ui';
+import type { DataTableColumn } from 'naive-ui';
 
 import type {
   MerchantDataAnalyzeData,
@@ -15,7 +15,7 @@ export const merchantDataAnalyzeOwnedOccupancyRateDataRef = ref<
 >([]);
 
 export const byAnalyzeDataColumns =
-  (): DataTableBaseColumn<MerchantDataAnalyzeData>[] => [
+  (): DataTableColumn<MerchantDataAnalyzeData>[] => [
     {
       title: '序号',
       key: 'id',
@@ -179,7 +179,7 @@ export const byAnalyzeDataColumns =
   ];
 
 export const byRateDataColumns =
-  (): DataTableBaseColumn<MerchantDataAnalyzeOwnedOccupancyRateData>[] => [
+  (): DataTableColumn<MerchantDataAnalyzeOwnedOccupancyRateData>[] => [
     {
       title: '序号',
       key: 'id',

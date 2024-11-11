@@ -1,4 +1,4 @@
-import type { DataTableBaseColumn } from 'naive-ui';
+import type { DataTableColumn } from 'naive-ui';
 
 import type { FinanceLedgerData } from '../models';
 
@@ -14,7 +14,7 @@ import {
 
 export const financialLedgerDataRef = ref<FinanceLedgerData[]>([]);
 
-export function initColumns(): DataTableBaseColumn<FinanceLedgerData>[] {
+export const initColumns = (): DataTableColumn<FinanceLedgerData>[] => {
   return [
     {
       title: '序号',
@@ -197,7 +197,7 @@ export function initColumns(): DataTableBaseColumn<FinanceLedgerData>[] {
       width: 150,
     },
   ];
-}
+};
 
 export const generateFinancialLedgerData = (): FinanceLedgerData => {
   const currentDate = new Date();
