@@ -48,6 +48,10 @@ export const getRandomAddress = () => {
   return `${cities[Math.floor(Math.random() * cities.length)]} ${streets[Math.floor(Math.random() * streets.length)]} ${buildingNumbers[Math.floor(Math.random() * buildingNumbers.length)]}`;
 };
 
+export const safeAccess = <T>(array: T[], index: number, defaultValue: T) => {
+  return array[index] === undefined ? defaultValue : array[index];
+};
+
 export const useAnalyticsStore = defineStore('analyticsStore', () => {
   const projectItems = ref<
     {

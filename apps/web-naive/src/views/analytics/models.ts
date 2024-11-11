@@ -184,3 +184,87 @@ export interface RentArrearsData {
   // 备注
   remarks: string;
 }
+
+export interface MerchantDataAnalyzeData {
+  // 项目名称
+  projectName: string;
+  // 年度任务之租赁面积 (m2)
+  annualLeasingArea: string;
+  // 年度任务之租赁回款 (万元)
+  annualLeasingReturn: string;
+  // 年度完成情况之租赁面积 (m2)
+  annualCompletionLeasingArea: string;
+  // 年度完成情况之租赁面积占比 (%)
+  annualCompletionLeasingAreaPercentage: string;
+  // 年度完成情况之租赁回款 (万元)
+  annualCompletionLeasingReturn: string;
+  // 年度完成情况之租赁回款占比 (%)
+  annualCompletionLeasingReturnPercentage: string;
+  // 第一季度目标之租赁面积 (m2)
+  firstQuarterLeasingAreaTarget: string;
+  // 第一季度目标之租赁回款 (万元)
+  firstQuarterLeasingReturnTarget: string;
+  // 第一季度完成情况之租赁面积 (m2)
+  firstQuarterCompletionLeasingArea: string;
+  // 第一季度完成情况之租赁面积占比 (%)
+  firstQuarterCompletionLeasingAreaPercentage: string;
+  // 第一季度完成情况之租赁回款 (万元)
+  firstQuarterCompletionLeasingReturn: string;
+  // 第一季度完成情况之租赁回款占比 (%)
+  firstQuarterCompletionLeasingReturnPercentage: string;
+  // 第二季度目标之租赁面积 (m2)
+  secondQuarterLeasingAreaTarget: string;
+  // 第二季度目标之租赁回款 (万元)
+  secondQuarterLeasingReturnTarget: string;
+  // 第二季度完成情况之租赁面积 (m2)
+  secondQuarterCompletionLeasingArea: string;
+  // 第二季度完成情况之租赁面积占比 (%)
+  secondQuarterCompletionLeasingAreaPercentage: string;
+  // 第二季度完成情况之租赁回款 (万元)
+  secondQuarterCompletionLeasingReturn: string;
+  // 第二季度完成情况之租赁回款占比 (%)
+  secondQuarterCompletionLeasingReturnPercentage: string;
+  // 第三季度目标之租赁面积 (m2)
+  thirdQuarterLeasingAreaTarget: string;
+  // 第三季度目标之租赁回款 (万元)
+  thirdQuarterLeasingReturnTarget: string;
+  // 第三季度完成情况之租赁面积 (m2)
+  thirdQuarterCompletionLeasingArea: string;
+  // 第三季度完成情况之租赁面积占比 (%)
+  thirdQuarterCompletionLeasingAreaPercentage: string;
+  // 第三季度完成情况之租赁回款 (万元)
+  thirdQuarterCompletionLeasingReturn: string;
+  // 第三季度完成情况之租赁回款占比 (%)
+  thirdQuarterCompletionLeasingReturnPercentage: string;
+  // 第四季度目标之租赁面积 (m2)
+  fourthQuarterLeasingAreaTarget: string;
+  // 第四季度目标之租赁回款 (万元)
+  fourthQuarterLeasingReturnTarget: string;
+  // 第四季度完成情况之租赁面积 (m2)
+  fourthQuarterCompletionLeasingArea: string;
+  // 第四季度完成情况之租赁面积占比 (%)
+  fourthQuarterCompletionLeasingAreaPercentage: string;
+  // 第四季度完成情况之租赁回款 (万元)
+  fourthQuarterCompletionLeasingReturn: string;
+  // 第四季度完成情况之租赁回款占比 (%)
+  fourthQuarterCompletionLeasingReturnPercentage: string;
+}
+
+export interface MerchantDataAnalyzeOwnedOccupancyRateData {
+  // 项目名称
+  projectName: string;
+  // 可租面积 (m2)
+  availableArea: string;
+  // 出租率目标 (%)
+  occupancyRateTarget: string;
+  // 出租面积目标 (m2)
+  occupancyAreaTarget: string;
+
+  // 以下三个数据判断条件模糊，暂不实现
+  // 累计已出租面积 (m2)
+  // 出租率 (%)
+  // 比较上月净面积 (m2)
+
+  // 出租面积缺口 (m2)
+  occupancyAreaGap: string;
+}
