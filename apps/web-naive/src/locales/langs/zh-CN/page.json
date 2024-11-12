@@ -14,5 +14,12 @@
   "manage": {
     "title": "管理",
     "merchant": "商户管理"
+  },
+  "approval": {
+    "title": "审批管理",
+    "await": "待我审批的",
+    "finish": "我已审批的",
+    "send": "我发送的",
+    "copy": "抄送我的"
   }
 }
