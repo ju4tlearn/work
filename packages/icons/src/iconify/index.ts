@@ -25,3 +25,7 @@ export const IcOutlineAdd = createIconifyIcon('ic:outline-add');
 export const MaterialSymbolsInfoOutline = createIconifyIcon(
   'material-symbols:info-outline',
 );
+
+export const MaterialSymbolsLightDownload = createIconifyIcon(
+  'material-symbols-light:download',
+);
