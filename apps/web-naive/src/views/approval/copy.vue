@@ -18,7 +18,7 @@ async function fetchData(url: string): Promise<any> {
     console.error('There was a problem with the fetch operation:', error);
   }
 }
-fetchData('http://127.0.0.1:4523/m1/5364813-5036821-default/approval')
+fetchData('https://apifoxmock.com/m1/5364813-5036821-default/approval')
   .then((res) => {
     array.value = res.array;
   })

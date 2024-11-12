@@ -72,7 +72,7 @@ async function fetchData(url: string): Promise<any> {
   }
 }
 
-fetchData('http://127.0.0.1:4523/m1/5364813-5036821-default/approval')
+fetchData('https://apifoxmock.com/m1/5364813-5036821-default/approval')
   .then((res) => {
     array.value = res.array;
     approval.value = res.approval;

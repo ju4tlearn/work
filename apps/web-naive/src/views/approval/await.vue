@@ -16,6 +16,7 @@ import {
   NTabs,
 } from 'naive-ui';
 
+import FinishButton from './component/FinishButton.vue';
 import SelectButton from './component/SelectButton.vue';
 
 const ShowMore = ref(false);
@@ -29,6 +30,10 @@ const array = ref([]) as any;
 const approval = ref([]) as any;
 
 const deletedItems = ref([]) as any;
+
+const pass = ref([]) as any;
+
+const rebout = ref([]) as any;
 
 const Delete = (index: number) => {
   approval.value.splice(index, 1);
@@ -73,10 +78,13 @@ async function fetchData(url: string): Promise<any> {
   }
 }
 
-fetchData('http://127.0.0.1:4523/m1/5364813-5036821-default/approval')
+fetchData('https://apifoxmock.com/m1/5364813-5036821-default/approval')
   .then((res) => {
     array.value = res.array;
     approval.value = res.approval;
+    deletedItems.value = res.delete;
+    pass.value = res.pass;
+    rebout.value = res.rebout;
   })
   .catch((error) => console.error('Error fetching data:', error));
 </script>
@@ -197,8 +205,64 @@ fetchData('http://127.0.0.1:4523/m1/5364813-5036821-default/approval')
           </NTable>
           <NPagination :page-count="24" class="flex justify-self-end" />
         </NTabPane>
-        <NTabPane name="finish" tab="审批通过"> 2 </NTabPane>
-        <NTabPane name="overrule" tab="审批驳回"> 3 </NTabPane>
+        <NTabPane class="space-y-4" name="finish" tab="审批通过">
+          <NTable :single-line="false" class="w-full text-center">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>审批状态</th>
+                <th>审批类型</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>发起时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in pass" :key="item">
+                <td>{{ item.id }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.opinion }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.memory }}</td>
+                <td>{{ item.nowdata }}</td>
+                <td>
+                  <FinishButton />
+                </td>
+              </tr>
+            </tbody>
+          </NTable>
+          <NPagination :page-count="24" class="flex justify-self-end" />
+        </NTabPane>
+        <NTabPane class="space-y-4" name="overrule" tab="审批驳回">
+          <NTable :single-line="false" class="w-full text-center">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>审批状态</th>
+                <th>审批类型</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>发起时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in rebout" :key="item">
+                <td>{{ item.id }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.opinion }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.memory }}</td>
+                <td>{{ item.nowdata }}</td>
+                <td>
+                  <FinishButton />
+                </td>
+              </tr>
+            </tbody>
+          </NTable>
+          <NPagination :page-count="24" class="flex justify-self-end" />
+        </NTabPane>
         <NTabPane class="space-y-4" name="withdraw" tab="已撤销">
           <NTable :single-line="false" class="w-full text-center">
             <thead>
