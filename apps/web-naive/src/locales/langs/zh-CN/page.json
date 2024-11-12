@@ -21,5 +21,8 @@
     "record": "分佣配置",
     "approval": "业绩审批",
     "permission": "权限配置"
+  },
+  "analytics": {
+    "title": "数据分析"
   }
 }
