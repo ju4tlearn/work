@@ -33,3 +33,4 @@ export const Iconbell = createIconifyIcon('smi:bell');
 export const Icondownload = createIconifyIcon('material-symbols:download');
 export const Iconremove = createIconifyIcon('line-md:remove');
 export const Iconupload = createIconifyIcon('prime:upload');
+export const Icondel = createIconifyIcon('material-symbols:delete-sharp');

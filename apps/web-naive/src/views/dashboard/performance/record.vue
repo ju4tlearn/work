@@ -24,9 +24,16 @@ import {
 } from 'naive-ui';
 
 import Add from '#/views/dashboard/performance/com/slot-add.vue';
+import Change from '#/views/dashboard/performance/com/slot-change.vue';
 
 const router = useRouter();
 const show = ref<boolean>(false);
+const show2 = ref<boolean>(false);
+const show3 = ref<boolean>(false);
+const showModalAdd = ref(false);
+const showModalChange = ref(false);
+const result = ref({});
+const rowItem = ref();
 const optionsManagement = [
   {
     label: '租赁提成明细',
@@ -92,46 +99,140 @@ const columns: DataTableColumns = [
     title: '操作',
     align: 'center',
     key: 'action',
-    render() {
-      return [
-        h(
-          NButton,
-          {
-            text: true,
-            style: { color: 'blue' },
-            class: 'mr-3',
-          },
-          '编辑',
-        ),
+    render(row: any) {
+      if (row.status === 0) {
+        return [
+          h(
+            NButton,
+            {
+              text: true,
+              style: { color: 'blue' },
+              class: 'mr-3',
+              onClick: () => {
+                result.value = row;
+                showModalChange.value = true;
+              },
+            },
+            '编辑',
+          ),
 
-        h(
-          NButton,
-          {
-            text: true,
-            style: { color: 'red' },
-          },
-          '禁用',
-        ),
-      ];
+          h(
+            NButton,
+            {
+              text: true,
+              style: { color: 'red' },
+              onClick: () => {
+                rowItem.value = row;
+                show2.value = true;
+              },
+            },
+            '禁用',
+          ),
+        ];
+      } else {
+        return row.show1
+          ? [
+              h(
+                NButton,
+                {
+                  text: true,
+                  style: { color: 'blue' },
+                  class: 'mr-3',
+                  onClick: () => {
+                    result.value = row;
+                    showModalChange.value = true;
+                  },
+                },
+                '编辑',
+              ),
+
+              h(
+                NButton,
+                {
+                  text: true,
+                  style: { color: 'red' },
+                  onClick: () => {
+                    rowItem.value = row;
+                    show2.value = true;
+                  },
+                },
+                '禁用',
+              ),
+            ]
+          : [
+              h(
+                NButton,
+                {
+                  text: true,
+                  style: { color: 'blue' },
+                  class: 'mr-3',
+                  onClick: () => {
+                    result.value = row;
+                    showModalChange.value = true;
+                  },
+                },
+                '编辑',
+              ),
+
+              h(
+                NButton,
+                {
+                  text: true,
+                  style: { color: 'red' },
+                  onClick: () => {
+                    rowItem.value = row;
+                    show3.value = true;
+                  },
+                },
+                '启用',
+              ),
+            ];
+      }
     },
   },
 ];
-const data = [
+const data = ref([
   {
+    status: 0,
+    show: true,
     standard: '全民营销',
     industry: '行业内',
     type: '新签',
     time: '1年≤x＜2年',
   },
-  { standard: '自主招商', industry: '行业内', type: '新签', time: '＜1年' },
   {
+    status: 0,
+    show: true,
+    standard: '自主招商',
+    industry: '行业内',
+    type: '新签',
+    time: '＜1年',
+  },
+  {
+    status: 0,
+    show: true,
     standard: '产业合作部网络渠道',
     industry: '行业外',
     type: '新签',
     time: '≥3年',
   },
-];
-const showModalAdd = ref(false);
+]);
+const ClickOk1 = () => {
+  rowItem.value.status = 1;
+  rowItem.value.show1 = false;
+  show2.value = false;
+};
+const ClickNo1 = () => {
+  show2.value = false;
+};
+const ClickOk2 = () => {
+  rowItem.value.status = 0;
+  rowItem.value.show1 = true;
+  show3.value = false;
+};
+const ClickNo2 = () => {
+  show3.value = false;
+};
 </script>
 
 <template>
@@ -201,7 +302,69 @@ const showModalAdd = ref(false);
           <Iconremove @click="showModalAdd = false" />
         </template>
         <Add />
+        <div class="mt-10 flex w-full justify-center">
+          <NButton
+            class="mr-3"
+            tertiary
+            type="info"
+            @click="showModalAdd = false"
+          >
+            取消
+          </NButton>
+          <NButton class="ml-3" type="info" @click="showModalAdd = false">
+            确认
+          </NButton>
+        </div>
       </NCard>
+    </NModal>
+    <NModal v-model:show="showModalChange">
+      <NCard
+        :bordered="false"
+        aria-modal="true"
+        role="dialog"
+        size="huge"
+        style="width: 1200px"
+        title="新增分佣配置"
+      >
+        <Change :data="result" />
+        <div class="mt-10 flex w-full justify-center">
+          <NButton
+            class="mr-3"
+            tertiary
+            type="info"
+            @click="showModalChange = false"
+          >
+            取消
+          </NButton>
+          <NButton class="ml-3" type="info" @click="showModalChange = false">
+            确认
+          </NButton>
+        </div>
+      </NCard>
+    </NModal>
+    <NModal v-model:show="show2" style="width: 600px; background-color: white">
+      <div>
+        <div class="text-[18px]">确定要禁用该分佣配置吗？</div>
+
+        <div class="mt-10 flex w-full justify-end">
+          <NButton class="mr-3" tertiary type="info" @click="ClickNo1">
+            取消
+          </NButton>
+          <NButton class="ml-3" type="info" @click="ClickOk1"> 确认 </NButton>
+        </div>
+      </div>
+    </NModal>
+    <NModal v-model:show="show3" style="width: 600px; background-color: white">
+      <div>
+        <div class="text-[18px]">确定要启用该分佣配置吗？</div>
+
+        <div class="mt-10 flex w-full justify-end">
+          <NButton class="mr-3" tertiary type="info" @click="ClickNo2">
+            取消
+          </NButton>
+          <NButton class="ml-3" type="info" @click="ClickOk2"> 确认 </NButton>
+        </div>
+      </div>
     </NModal>
   </div>
 </template>

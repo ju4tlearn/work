@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { defineProps, ref } from 'vue';
 
 import { Icondel } from '@vben/icons';
 
@@ -12,20 +12,13 @@ import {
   NSelect,
 } from 'naive-ui';
 
-const optionsProject = [
-  {
-    label: 'E + SPACE',
-    value: 'E + SPACE',
+const props = defineProps({
+  data: {
+    type: Object,
+    default: () => ({}),
   },
-  {
-    label: '软件新城',
-    value: '软件新城',
-  },
-  {
-    label: '创新园区',
-    value: '创新园区',
-  },
-];
+});
+
 const optionsStandard = [
   {
     label: '全民营销',
@@ -143,17 +136,20 @@ const value1 = ref(false);
 const value2 = ref(false);
 const value3 = ref(false);
 const value4 = ref(false);
+const InfinityValue = ref('行业内');
+const Duty = ref('招商主管');
+const Type = ref('新签');
+const Time = ref('＜1年');
 const onlyAllowNumber = (value: string) => !value || /^\d+$/.test(value);
+const aaa = () => {
+  Duty.value = props.data.standard;
+  InfinityValue.value = props.data.industry;
+  Type.value = props.data.type;
+  Time.value = props.data.time;
+};
+aaa();
 </script>
 <template>
-  <div class="flex">
-    <div>
-      <div class="text-[20px]">选择项目：</div>
-      <div class="mt-1">
-        <NSelect :options="optionsProject" class="w-40" />
-      </div>
-    </div>
-  </div>
   <div class="mt-10 text-[20px]">客户信息</div>
   <div class="mt-1 flex justify-between">
     <div class="flex">
@@ -162,7 +158,7 @@ const onlyAllowNumber = (value: string) => !value || /^\d+$/.test(value);
         租赁提成标准：
       </div>
       <div>
-        <NSelect :options="optionsStandard" class="w-40" />
+        <NSelect v-model:value="Duty" :options="optionsStandard" class="w-40" />
       </div>
     </div>
     <div class="flex">
@@ -170,7 +166,11 @@ const onlyAllowNumber = (value: string) => !value || /^\d+$/.test(value);
         <span class="text-[red]">*</span>行业内/行业外
       </div>
       <div>
-        <NSelect :options="optionsIndustry" class="w-40" />
+        <NSelect
+          v-model:value="InfinityValue"
+          :options="optionsIndustry"
+          class="w-40"
+        />
       </div>
     </div>
   </div>
@@ -182,13 +182,13 @@ const onlyAllowNumber = (value: string) => !value || /^\d+$/.test(value);
         签约类型:
       </div>
       <div>
-        <NSelect :options="optionsType" class="w-40" />
+        <NSelect v-model:value="Type" :options="optionsType" class="w-40" />
       </div>
     </div>
     <div class="flex">
       <div class="text-[20px]"><span class="text-[red]">*</span>签约时长:</div>
       <div>
-        <NSelect :options="optionsTime" class="w-40" />
+        <NSelect v-model:value="Time" :options="optionsTime" class="w-40" />
       </div>
     </div>
   </div>
