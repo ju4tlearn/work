@@ -36,7 +36,7 @@ const tabs = computed(() => {
   });
 });
 
-const currentTab = ref('index.vue');
+const currentTab = ref('management.vue');
 
 const toggleOpen = () => {
   open.value = !open.value;
