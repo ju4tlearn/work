@@ -25,7 +25,9 @@ export const IcOutlineAdd = createIconifyIcon('ic:outline-add');
 export const MaterialSymbolsInfoOutline = createIconifyIcon(
   'material-symbols:info-outline',
 );
-
+export const MdiAdd = createIconifyIcon('ic:sharp-add');
+export const MdiAddDian = createIconifyIcon('flowbite:dots-vertical-outline');
+export const Mdipeople = createIconifyIcon('akar-icons:person');
 export const Iconadd = createIconifyIcon('material-symbols:add');
 export const Iconsearch = createIconifyIcon('material-symbols:search');
 export const Iconwallet = createIconifyIcon('lucide:wallet');
