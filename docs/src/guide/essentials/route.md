@@ -64,7 +64,7 @@ const routes: RouteRecordRaw[] = [
       {
         name: 'VbenAbout',
         path: '/vben-admin/about',
-        component: () => import('#/views/_core/about/index.vue'),
+        component: () => import('#/views/_core/about/management.vue'),
         meta: {
           badgeType: 'dot',
           badgeVariants: 'destructive',
@@ -237,7 +237,7 @@ const routes: RouteRecordRaw[] = [
       {
         name: 'HomeIndex',
         path: '/home/index',
-        component: () => import('#/views/home/index.vue'),
+        component: () => import('#/views/home/management.vue'),
         meta: {
           icon: 'mdi:home',
           title: $t('page.home.index'),
@@ -534,7 +534,7 @@ interface RouteMeta {
 - 类型：`number`
 - 默认值：`-1`
 
-用于配置标签页最大打开数量，设置后会在打开新标签页时自动关闭最早打开的标签页(仅在打开同名标签页时生效)。
+用于配置标签页最大打开数量，设置后会在打开新标签页时自动关闭最早打开的标签页( 仅在打开同名标签页时生效)。
 
 ### menuVisibleWithForbidden
 

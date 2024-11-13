@@ -28,3 +28,14 @@ export const MaterialSymbolsInfoOutline = createIconifyIcon(
 export const MdiAdd = createIconifyIcon('ic:sharp-add');
 export const MdiAddDian = createIconifyIcon('flowbite:dots-vertical-outline');
 export const Mdipeople = createIconifyIcon('akar-icons:person');
+export const Iconadd = createIconifyIcon('material-symbols:add');
+export const Iconsearch = createIconifyIcon('material-symbols:search');
+export const Iconwallet = createIconifyIcon('lucide:wallet');
+export const Iconbell = createIconifyIcon('smi:bell');
+export const Icondownload = createIconifyIcon('material-symbols:download');
+export const Iconremove = createIconifyIcon('line-md:remove');
+export const Iconupload = createIconifyIcon('prime:upload');
+export const Icondel = createIconifyIcon('material-symbols:delete-sharp');
+export const MaterialSymbolsLightDownload = createIconifyIcon(
+  'material-symbols-light:download',
+);
