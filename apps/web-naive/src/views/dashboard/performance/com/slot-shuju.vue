@@ -227,7 +227,7 @@ const data8 = ref(
       <div>线索管理</div>
       <hr style="border: 1px solid gray" />
     </div>
-    <div class="flex justify-between">
+    <div class="mt-3 flex justify-between">
       <div class="ml-3">租客-私客</div>
       <NRadioGroup v-model:value="value1" class="w-4/5" name="radiogroup">
         <NRadio
@@ -241,13 +241,13 @@ const data8 = ref(
       </NRadioGroup>
     </div>
   </div>
-  <div>
+  <div class="mt-3">
     <div>
       <div>房源管理</div>
       <hr style="border: 1px solid gray" />
     </div>
     <div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">独栋</div>
         <NRadioGroup v-model:value="value2" class="w-4/5" name="radiogroup">
           <NRadio
@@ -260,7 +260,7 @@ const data8 = ref(
           </NRadio>
         </NRadioGroup>
       </div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">空房快查</div>
         <NRadioGroup v-model:value="value3" class="w-4/5" name="radiogroup">
           <NRadio
@@ -273,7 +273,7 @@ const data8 = ref(
           </NRadio>
         </NRadioGroup>
       </div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">调价管理</div>
         <NRadioGroup v-model:value="value4" class="w-4/5" name="radiogroup">
           <NRadio
@@ -288,13 +288,13 @@ const data8 = ref(
       </div>
     </div>
   </div>
-  <div>
+  <div class="mt-3">
     <div>
       <div>合约管理</div>
       <hr style="border: 1px solid gray" />
     </div>
     <div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">预定管理</div>
         <NRadioGroup v-model:value="value5" class="w-4/5" name="radiogroup">
           <NRadio
@@ -307,7 +307,7 @@ const data8 = ref(
           </NRadio>
         </NRadioGroup>
       </div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">租房合同</div>
         <NRadioGroup v-model:value="value6" class="w-4/5" name="radiogroup">
           <NRadio
@@ -322,13 +322,13 @@ const data8 = ref(
       </div>
     </div>
   </div>
-  <div>
+  <div class="mt-3">
     <div>
       <div>业绩管理</div>
       <hr style="border: 1px solid gray" />
     </div>
     <div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">业绩台账</div>
         <NRadioGroup v-model:value="value7" class="w-4/5" name="radiogroup">
           <NRadio
@@ -341,7 +341,7 @@ const data8 = ref(
           </NRadio>
         </NRadioGroup>
       </div>
-      <div class="flex justify-between">
+      <div class="mt-3 flex justify-between">
         <div class="ml-3">分佣配置</div>
         <NRadioGroup v-model:value="value8" class="w-4/5" name="radiogroup">
           <NRadio

@@ -28,6 +28,7 @@ const performance: RouteRecordRaw[] = [
         path: '/performance/2',
         meta: {
           title: $t('page.performance.record'),
+          icon: 'mdi:home',
         },
         component: () => import('#/views/dashboard/performance/record.vue'),
       },
@@ -36,6 +37,7 @@ const performance: RouteRecordRaw[] = [
         path: '/performance/3',
         meta: {
           title: $t('page.performance.approval'),
+          icon: 'mdi:home',
         },
         component: () => import('#/views/dashboard/performance/approval.vue'),
       },
@@ -44,6 +46,7 @@ const performance: RouteRecordRaw[] = [
         path: '/performance/4',
         meta: {
           title: $t('page.performance.permission'),
+          icon: 'mdi:home',
         },
         component: () => import('#/views/dashboard/performance/permission.vue'),
       },
